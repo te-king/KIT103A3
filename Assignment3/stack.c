@@ -35,7 +35,10 @@ struct stack_int {
 void init_stack(stack *s)
 {
     trace("stack: Initialiser starts");
-COMPLETE ME
+
+	*s = (stack)malloc(sizeof(struct stack_int));
+	(*s)->tos = NULL;
+
     trace("stack: Initialiser ends");
 }
 
@@ -52,7 +55,14 @@ COMPLETE ME
 bool isEmptyS(stack s)
 {
     trace("stack: isEmpty starts and ends");
-COMPLETE ME
+	if (s->tos == NULL)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 /*
@@ -69,9 +79,20 @@ COMPLETE ME
 */
 void *top(stack s)
 {
+	void *value;	// Value at the top of the stack.
     trace("stack: top starts");
-COMPLETE ME
+	
+	if (!isEmptyS(s))
+	{
+		value = getDataN(s->tos);
+	}
+	else
+	{
+		exit(1);
+	}
+
     trace("stack: top ends");
+	return value;
 }
 
 /*
@@ -88,7 +109,14 @@ COMPLETE ME
 void pop(stack s)
 {
     trace("stack: pop starts");
-COMPLETE ME
+	if (!isEmptyS(s))
+	{
+		s->tos = getNextN(s->tos);	// TODO maybe free the memory before tossing it to the side
+	}
+	else
+	{
+		exit(1);
+	}
     trace("stack: pop ends");
 }
 
@@ -105,8 +133,13 @@ COMPLETE ME
 */
 void push(stack s,void *o)
 {
+	node n;	// The new node to be added.
     trace("stack: push starts");
-COMPLETE ME
+
+	init_node(&n, o);
+	setNextN(n, s->tos);
+	s->tos = n;
+
     trace("stack: push ends");
 }
 
