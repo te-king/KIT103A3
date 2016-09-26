@@ -55,14 +55,8 @@ void init_stack(stack *s)
 bool isEmptyS(stack s)
 {
     trace("stack: isEmpty starts and ends");
-	if (s->tos == NULL)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+
+	return s->tos == NULL;
 }
 
 /*
@@ -111,7 +105,7 @@ void pop(stack s)
     trace("stack: pop starts");
 	if (!isEmptyS(s))
 	{
-		s->tos = getNextN(s->tos);	// TODO maybe free the memory before tossing it to the side
+		s->tos = getNextN(s->tos);	// TODO maybe free the memory before tossing it away
 	}
 	else
 	{
