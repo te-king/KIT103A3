@@ -27,7 +27,7 @@ struct node_int {
 	*	Node
 	*	initialiser function.
 	*	Pre-condition: none
-	*	Post-condition: the Node variable's "data" field ise
+	*	Post-condition: the Node variable's "data" field is
 	*					set to the given parameter (o) and the
 	*					Node variable's "next" field is set
 	*					to NULL
@@ -37,7 +37,9 @@ void init_node(node *n,void *o)
 {
     trace("Node: Initialiser starts");
 
-//TODO
+	(*n) = (node)malloc(sizeof(struct node_int));
+	setDataN(*n, o);
+	setNextN(*n, NULL);
 
     trace("Node: Initialiser ends");
 }
@@ -56,7 +58,7 @@ void *getDataN(node n)
 {
     trace("TNode: getDataN starts and ends");
 
-//TODO
+	return getDataN(n);
 }
 
 /*
@@ -73,7 +75,7 @@ node getNextN(node n)
 {
     trace("TNode: getNextN starts and ends");
 
-	//TODO
+	return getNextN(n);
 }
 
 /*
@@ -90,7 +92,7 @@ void setDataN(node n,void *o)
 {
     trace("TNode: setDataN starts");
 
-//TODO
+	n->data = o;
 
     trace("TNode: setDataN ends");
 }
@@ -110,7 +112,7 @@ void setNextN(node v, node n)
 {
     trace("TNode: setNextN starts");
 
-//TODO
+	n->next = n;
 
     trace("TNode: setNextN ends");
 }
