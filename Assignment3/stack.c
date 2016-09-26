@@ -35,7 +35,7 @@ struct stack_int {
 void init_stack(stack *s)
 {
     trace("stack: Initialiser starts");
-COMPLETE ME
+//TODO
     trace("stack: Initialiser ends");
 }
 
@@ -52,7 +52,7 @@ COMPLETE ME
 bool isEmptyS(stack s)
 {
     trace("stack: isEmpty starts and ends");
-COMPLETE ME
+//TODO
 }
 
 /*
@@ -70,7 +70,7 @@ COMPLETE ME
 void *top(stack s)
 {
     trace("stack: top starts");
-COMPLETE ME
+//TODO
     trace("stack: top ends");
 }
 
@@ -88,7 +88,7 @@ COMPLETE ME
 void pop(stack s)
 {
     trace("stack: pop starts");
-COMPLETE ME
+//TODO
     trace("stack: pop ends");
 }
 
@@ -106,7 +106,7 @@ COMPLETE ME
 void push(stack s,void *o)
 {
     trace("stack: push starts");
-COMPLETE ME
+//TODO
     trace("stack: push ends");
 }
 

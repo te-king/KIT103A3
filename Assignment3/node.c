@@ -37,7 +37,7 @@ void init_node(node *n,void *o)
 {
     trace("Node: Initialiser starts");
 
-COMPLETE ME
+//TODO
 
     trace("Node: Initialiser ends");
 }
@@ -56,7 +56,7 @@ void *getDataN(node n)
 {
     trace("TNode: getDataN starts and ends");
 
-COMPLETE ME
+//TODO
 }
 
 /*
@@ -73,7 +73,7 @@ node getNextN(node n)
 {
     trace("TNode: getNextN starts and ends");
 
-	COMPLETE ME
+	//TODO
 }
 
 /*
@@ -90,7 +90,7 @@ void setDataN(node n,void *o)
 {
     trace("TNode: setDataN starts");
 
-COMPLETE ME
+//TODO
 
     trace("TNode: setDataN ends");
 }
@@ -110,7 +110,7 @@ void setNextN(node v, node n)
 {
     trace("TNode: setNextN starts");
 
-COMPLETE ME
+//TODO
 
     trace("TNode: setNextN ends");
 }

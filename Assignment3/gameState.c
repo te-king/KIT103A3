@@ -48,7 +48,7 @@ void init_gameState(gameState *sp,int c,int w)
 {
 	trace("GameState: initialiser starts");
 	
-COMPLETE ME
+//TODO
 		
 	trace("GameState: initialiser ends");
 }
@@ -69,7 +69,7 @@ int getCount(gameState s)
 {
 	trace("getCount: getCount starts and finishes");
 
-COMPLETE ME
+//TODO
 }
 
 
@@ -88,7 +88,7 @@ int getWorth(gameState s)
 {
 	trace("getWorth: getWorth starts and finishes");
 
-COMPLETE ME
+//TODO
 }
 
 
@@ -107,7 +107,7 @@ void setCount(gameState s,int c)
 {
 	trace("setCount: setCount starts");
 		
-COMPLETE ME
+//TODO
 		
 	trace("setCount: setCount ends");
 }
@@ -128,7 +128,7 @@ void setWorth(gameState s,int w)
 {
 	trace("setCount: setWorth starts");
 		
-COMPLETE ME
+//TODO
 		
 	trace("setCount: setWorth ends");
 }
@@ -202,5 +202,5 @@ bool gameOver(gameState s)
 {
 	trace("gameOver: gameOver starts and ends");
 
-COMPLETE ME
+//TODO
 }

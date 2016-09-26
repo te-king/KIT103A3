@@ -45,7 +45,7 @@ void init_gameTree(gameTree *tp,bool e,void *o,int l)
 {
 	trace("GameTree: initialiser starts");
 	
-COMPLETE ME
+//TODO
 		
 	trace("GameTree: initialiser ends");
 }
@@ -65,7 +65,7 @@ bool isEmptyGT(gameTree t)
 {
 	trace("isEmptyGT: isEmptyGT starts and ends");
 		
-COMPLETE ME
+//TODO
 }
 
 
@@ -108,7 +108,7 @@ int getLevel(gameTree t)
 {
 	trace("getLevel: getLevel starts");
 		
-COMPLETE ME
+//TODO
 
 	trace("getLevel: getLevel ends");
 }	
@@ -129,7 +129,7 @@ gameTree getChild(gameTree t)
 {		
 	trace("getChild: getChild starts");
 		
-COMPLETE ME
+//TODO
 
 	trace("getChild: getChild ends");
 }
@@ -150,7 +150,7 @@ gameTree getSibling(gameTree t)
 {
 	trace("getSibling: getSibling starts");
 		
-COMPLETE ME
+//TODO
 
 	trace("getSibling: getSibling ends");
 }
@@ -171,7 +171,7 @@ void setData(gameTree t,void *o)
 {
 	trace("setData: setData starts");
 		
-COMPLETE ME
+//TODO
 		
 	trace("setData: setData ends");
 }
@@ -192,7 +192,7 @@ void setLevel(gameTree t,int l)
 {
 	trace("setLevel: setLevel starts");
 		
-COMPLETE ME
+//TODO
 		
 	trace("setLevel: setLevel ends");
 }
@@ -213,7 +213,7 @@ void setChild(gameTree t,gameTree c)
 {
 	trace("setChild: setChild starts");
 		
-COMPLETE ME
+//TODO
 		
 	trace("setChild: setChild ends");
 }
@@ -234,7 +234,7 @@ void setSibling(gameTree t,gameTree s)
 {
 	trace("setSibling: setSibling starts");
 		
-COMPLETE ME
+//TODO
 
 	trace("setSibling: setSibling ends");
 }
@@ -262,7 +262,7 @@ void generateLevelDF(gameTree t,stack k)
 {
 	trace("generateLevelDF: generateLevelDF starts");
 	
-COMPLETE ME
+//TODO
 		
 	trace("generateLevelDF: generateLevelDF ends");
 }
@@ -302,7 +302,7 @@ void buildGameDF(gameTree t, stack k, int d)
 {
 	trace("buildGameDF: buildGameDF starts");
 		
-COMPLETE ME
+//TODO
 		
 	trace("buildGameDF: buildGameDF ends");
 }

@@ -50,7 +50,7 @@ void init_TNode(tNode *tp, void *o, int l)
 {
     trace("TNode: Initialiser starts");
 
-COMPLETE ME
+//TODO
 
     trace("TNode: Initialiser ends");
 }
@@ -71,7 +71,7 @@ void setTNData(tNode t,void *o)
 {
     trace("setTNData: setTNData starts");
 
-COMPLETE ME
+//TODO
 
     trace("setTNData: setTNData ends");
 }
@@ -92,7 +92,7 @@ void setTNLevel(tNode t,int l)
 {
     trace("setTNLevel: setTNLevel starts");
 
-COMPLETE ME
+//TODO
 
     trace("setTNLevel: setTNLevel ends");
 }
@@ -113,7 +113,7 @@ void setTNChild(tNode t,tNode n)
 {
     trace("setTNChild: setTNChild starts");
 
-COMPLETE ME
+//TODO
 
     trace("setTNChild: setTNChild ends");
 }
@@ -134,7 +134,7 @@ void setTNSibling(tNode t,tNode n)
 {
     trace("setTNSibling: setTNSibling starts");
 
-COMPLETE ME
+//TODO
 
     trace("setTNSibling: setTNSibling ends");
 }
@@ -154,7 +154,7 @@ void *getTNData(tNode t)
 {
     trace("getTNData: getTNData starts and ends");
 
-COMPLETE ME
+//TODO
 }
 	
 	
@@ -173,7 +173,7 @@ int getTNLevel(tNode t)
 {
     trace("getTNLevel: getTNLevel starts and ends");
 
-COMPLETE ME
+//TODO
 }
 	
 	
@@ -192,7 +192,7 @@ tNode getTNChild(tNode t)
 {
     trace("getTNChild: getTNChild starts and ends");
 
-COMPLETE ME
+//TODO
 }
 	
 	
@@ -211,7 +211,7 @@ tNode getTNSibling(tNode t)
 {
     trace("getTNSibling: getTNSibling starts and ends");
 
-COMPLETE ME
+//TODO
 }
 
 
