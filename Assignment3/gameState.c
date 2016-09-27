@@ -48,7 +48,9 @@ void init_gameState(gameState *sp,int c,int w)
 {
 	trace("GameState: initialiser starts");
 	
-//TODO
+	*sp = (gameState)malloc(sizeof(struct gameState_int));
+	(*sp)->count = c;
+	(*sp)->worth = w;
 		
 	trace("GameState: initialiser ends");
 }
@@ -68,8 +70,8 @@ void init_gameState(gameState *sp,int c,int w)
 int getCount(gameState s)
 {
 	trace("getCount: getCount starts and finishes");
-
-//TODO
+	
+	return s->count;
 }
 
 
@@ -87,8 +89,8 @@ int getCount(gameState s)
 int getWorth(gameState s)
 {
 	trace("getWorth: getWorth starts and finishes");
-
-//TODO
+	
+	return s->worth;
 }
 
 
@@ -104,11 +106,11 @@ int getWorth(gameState s)
 	*	param int c value to install in the variable
 */
 void setCount(gameState s,int c)
-{
+{	
 	trace("setCount: setCount starts");
-		
-//TODO
-		
+	
+	s->count = c;
+	
 	trace("setCount: setCount ends");
 }
 
@@ -127,8 +129,8 @@ void setCount(gameState s,int c)
 void setWorth(gameState s,int w)
 {
 	trace("setCount: setWorth starts");
-		
-//TODO
+	
+	s->worth = w;
 		
 	trace("setCount: setWorth ends");
 }
