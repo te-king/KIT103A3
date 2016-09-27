@@ -43,9 +43,19 @@ struct gameTree_int
 */
 void init_gameTree(gameTree *tp,bool e,void *o,int l)
 {
+	tNode n;	// The root node fore the gameTree to start off with if e is false.
 	trace("GameTree: initialiser starts");
 	
-//TODO
+	*tp = (gameTree)malloc(sizeof(struct gameTree_int));
+	if (e)
+	{
+		(*tp)->root = NULL;
+	}
+	else
+	{
+		init_TNode(n, o, l);
+		(*tp)->root = n;
+	}
 		
 	trace("GameTree: initialiser ends");
 }
@@ -65,7 +75,7 @@ bool isEmptyGT(gameTree t)
 {
 	trace("isEmptyGT: isEmptyGT starts and ends");
 		
-//TODO
+	return t == NULL;
 }
 
 
@@ -108,7 +118,14 @@ int getLevel(gameTree t)
 {
 	trace("getLevel: getLevel starts");
 		
-//TODO
+	if (t != NULL)
+	{
+		if (!isEmptyGT(t))
+		{
+			return getTNData(t->root);
+		}
+	}
+	// TODO Find out if Pre-condition should be "none". If it should, then find out if we need to exit() when t is null or empty.
 
 	trace("getLevel: getLevel ends");
 }	
