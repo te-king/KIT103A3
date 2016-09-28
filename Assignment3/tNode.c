@@ -1,6 +1,6 @@
 /*
  *	Tree Node ADT
- *	author <<Your names here>>
+ *	author Stuart Orchard, Thomas King
  *	version September 2016
  *	
  *	This file holds the Tree Node ADT which represents
