@@ -1,12 +1,12 @@
 /*
  * Stack ADT
- * Author <<Your names here>>
+ * Author Stuart Orchard, Thomas King
  * Version September 2016
 
  * Implementation of a Stack using a linked-list of
  * nodes comprising "data" and "next" fields.
  *
- * YOU NEED TO COMPLETE THIS FILE. 
+ * This file is complete. 
  */
 
 

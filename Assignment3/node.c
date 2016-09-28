@@ -1,11 +1,11 @@
 /*
  * node ADT
- * Author <<YOUR NAMES HERE>>
+ * Author Stuart Orchard, Thomas King
  * Version September 2016
  * 
  * This file holds the Node ADT used by the Stack
  *
- * YOU NEED TO COMPLETE THIS FILE. 
+ * This file is complete. 
 */
 
 
