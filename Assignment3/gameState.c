@@ -203,6 +203,6 @@ int evaluateState(gameState s,bool p)
 bool gameOver(gameState s)
 {
 	trace("gameOver: gameOver starts and ends");
-
-//TODO
+	
+	return s->count >= 0;
 }
