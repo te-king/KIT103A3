@@ -754,9 +754,11 @@ char *rootNodeToString(gameTree t)
 {
 	trace("rootNodeToString: rootNodeToString starts");
 		
-	if (isEmptyGT(t))	// empty game tree
+	// If the game tree is empty, return the '<>' to signify it is empty.
+	if (isEmptyGT(t))
 		return "<>";
 	
+	// TODO Commenting?
 	char *s = (char*)malloc(sizeof(char) * 5);
 	sprintf(s,"%d ",getCount((gameState)getData(t)));
 	return s;
