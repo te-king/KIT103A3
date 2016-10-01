@@ -97,6 +97,7 @@ void *getData(gameTree t)
 	}
 
 	trace("getData: getData ends");
+	
 	return getTNData(t->root);
 }
 	
@@ -121,10 +122,10 @@ int getLevel(gameTree t)
 		fprintf(stderr,"getLevel: game tree is empty or null");
 		exit(2);
 	}
-	
-	return getTNData(t->root);
 
 	trace("getLevel: getLevel ends");
+
+	return getTNLevel(t->root);
 }	
 	
 
