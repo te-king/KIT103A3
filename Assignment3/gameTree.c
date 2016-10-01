@@ -75,7 +75,7 @@ bool isEmptyGT(gameTree t)
 {
 	trace("isEmptyGT: isEmptyGT starts and ends");
 		
-	return t == NULL;
+	return t->root == NULL;
 }
 
 
@@ -145,18 +145,14 @@ int getLevel(gameTree t)
 */
 gameTree getChild(gameTree t) 
 {
-	gameTree new_tree = NULL;	// The new tree containing t's child.
+	gameTree new_tree = NULL;	// The new tree containing t's child as its root node.
 
 	trace("getChild: getChild starts");
 	
-	if (t != NULL )
+	if (t != NULL && !isEmptyGT(t))
 	{
-		// If the game tree is empty then don't do anything and just return the NULL new tree at the end. TODO maybe we should just exit(1)?
-		if (!isEmptyGT(t))
-		{
-			init_gameTree(new_tree, true, NULL, 0);
-			new_tree->root = getChild(t->root);
-		}
+		init_gameTree(new_tree, true, NULL, 0);
+		new_tree->root = getChild(t->root);
 	}
 	else
 	{
@@ -186,14 +182,10 @@ gameTree getSibling(gameTree t)
 
 	trace("getSibling: getSibling starts");
 
-	if (t != NULL)
+	if (t != NULL && !isEmptyGT(t))
 	{
-		// If the game tree is empty then don't do anything and just return the NULL new tree at the end. TODO maybe we should just exit(1)?
-		if (!isEmptyGT(t))
-		{
-			init_gameTree(new_tree, true, NULL, 0);
-			new_tree->root = getSibling(t->root);
-		}
+		init_gameTree(new_tree, true, NULL, 0);
+		new_tree->root = getSibling(t->root);
 	}
 	else
 	{
@@ -338,9 +330,59 @@ void setSibling(gameTree t,gameTree s)
 */
 void generateLevelDF(gameTree t,stack k)
 {
+	gameTree eldest_child;		// Game tree containing the first child which t's root node will be assigned.
+	gameTree current_sibling;	// The sibling to add the next sibling to.
+	gameTree next_sibling;		// The next sibling to be added to the current sibling.
+	gameState new_state;		// The new state to be added to each new child.
+	int count;					// The number of remaining matches.
+	bool computer_turn;	// Whether it is the computer's turn or not.
+
 	trace("generateLevelDF: generateLevelDF starts");
-	
-//TODO
+
+	if (!isEmpty(t))
+	{
+		// If the level number is odd, then the turn is for the computer player
+		if (getLevel(t) % 2 == 1)
+		{
+			computer_turn = true;
+		}
+		else
+		{
+			computer_turn = false;
+		}
+
+		count = getCount((gameState)getData(t));
+
+		//TODO Could make a seperate function to reduce repetition. Could even start the for loop at 1 and check i == 1 to do first itteration.
+		// The first itteration adds the new tNode via setChild
+		count--;
+		init_gameState(&new_state, count, 0);
+		evaluateState(new_state, computer_turn);
+
+		init_gameTree(&eldest_child, false, new_state, getLevel(t) + 1);
+		setChild(t, eldest_child);
+		push(k, eldest_child);
+
+		current_sibling = eldest_child;
+
+		// All other itterations add the new tNodes via setSibling
+		for (int i = 2; i <= 9 && count > 0; i++)
+		{
+			count--;
+			init_gameState(&new_state, count, 0);
+			evaluateState(new_state, computer_turn);
+
+			init_gameTree(&next_sibling, false, new_state, getLevel(t) + 1);
+			setSibling(current_sibling, next_sibling);
+			push(k, next_sibling);
+
+			current_sibling = next_sibling;
+		}
+	}
+	else
+	{
+		exit(1);
+	}
 		
 	trace("generateLevelDF: generateLevelDF ends");
 }
@@ -379,9 +421,9 @@ void generateLevelDF(gameTree t,stack k)
 void buildGameDF(gameTree t, stack k, int d)
 {
 	trace("buildGameDF: buildGameDF starts");
-		
-//TODO
-		
+	
+	//TODO
+
 	trace("buildGameDF: buildGameDF ends");
 }
 	
