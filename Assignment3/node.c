@@ -17,7 +17,8 @@
 
 
 // the internals of the node
-struct node_int {
+struct node_int 
+{
 	void *data;		// the value to be stored in the node
 	node next;		// a link to the next node in the list
 };
@@ -37,9 +38,9 @@ void init_node(node *n,void *o)
 {
     trace("Node: Initialiser starts");
 
-	(*n) = (node)malloc(sizeof(struct node_int));
-	setDataN(*n, o);
-	setNextN(*n, NULL);
+	*n = (node)malloc(sizeof(struct node_int));
+	(*n)->data = o;
+	(*n)->next = NULL;
 
     trace("Node: Initialiser ends");
 }
@@ -58,7 +59,7 @@ void *getDataN(node n)
 {
     trace("TNode: getDataN starts and ends");
 
-	return getDataN(n);
+	return n->data;
 }
 
 /*
@@ -75,7 +76,7 @@ node getNextN(node n)
 {
     trace("TNode: getNextN starts and ends");
 
-	return getNextN(n);
+	return n->next;
 }
 
 /*

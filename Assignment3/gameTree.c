@@ -43,19 +43,16 @@ struct gameTree_int
 */
 void init_gameTree(gameTree *tp,bool e,void *o,int l)
 {
-	tNode n;	// The root node fore the gameTree to start off with if e is false.
 	trace("GameTree: initialiser starts");
 	
 	*tp = (gameTree)malloc(sizeof(struct gameTree_int));
-	if (e)
-	{
-		(*tp)->root = NULL;
-	}
-	else
-	{
+	
+	tNode n = NULL;
+	
+	if (!e)
 		init_TNode(n, o, l);
-		(*tp)->root = n;
-	}
+		
+	(*tp)->root = n;
 		
 	trace("GameTree: initialiser ends");
 }
@@ -119,14 +116,13 @@ int getLevel(gameTree t)
 	trace("getLevel: getLevel starts");
 	
 	// Because there is no pre-condition, exit when t is null or empty.
-	if (t != NULL && !isEmptyGT(t))
+	if (t == NULL || isEmptyGT(t))
 	{
-		return getTNData(t->root);
+		fprintf(stderr,"getLevel: game tree is empty or null");
+		exit(2);
 	}
-	else
-	{
-		exit(1);
-	}
+	
+	return getTNData(t->root);
 
 	trace("getLevel: getLevel ends");
 }	
@@ -145,19 +141,18 @@ int getLevel(gameTree t)
 */
 gameTree getChild(gameTree t) 
 {
-	gameTree new_tree = NULL;	// The new tree containing t's child as its root node.
 
 	trace("getChild: getChild starts");
 	
-	if (t != NULL && !isEmptyGT(t))
+	if (t == NULL || isEmptyGT(t))
 	{
-		init_gameTree(new_tree, true, NULL, 0);
-		new_tree->root = getChild(t->root);
-	}
-	else
-	{
+		fprintf(stderr,"getChild: game tree is empty or null");
 		exit(1);
 	}
+	
+	gameTree new_tree;	// The new tree containing t's child as its root node.
+	init_gameTree(new_tree, true, NULL, 0);
+	new_tree->root = getChild(t->root);
 
 	trace("getChild: getChild ends");
 
@@ -178,19 +173,17 @@ gameTree getChild(gameTree t)
 */
 gameTree getSibling(gameTree t) 
 {
-	gameTree new_tree = NULL;	// The new tree containing t's sibling.
-
 	trace("getSibling: getSibling starts");
-
-	if (t != NULL && !isEmptyGT(t))
+	
+	if (t == NULL || isEmptyGT(t))
 	{
-		init_gameTree(new_tree, true, NULL, 0);
-		new_tree->root = getSibling(t->root);
-	}
-	else
-	{
+		fprintf(stderr,"getSibling: game tree is empty or null");
 		exit(1);
 	}
+	
+	gameTree new_tree;	// The new tree containing t's sibling.
+	init_gameTree(new_tree, true, NULL, 0);
+	new_tree->root = getSibling(t->root);
 
 	trace("getSibling: getSibling ends");
 
@@ -213,14 +206,13 @@ void setData(gameTree t,void *o)
 {
 	trace("setData: setData starts");
 
-	if (t != NULL && !isEmptyGT(t))
+	if (t == NULL || isEmptyGT(t))
 	{
-		setData(t->root, o);
-	}
-	else
-	{
+		fprintf(stderr,"setData: game tree is empty or null");
 		exit(1);
 	}
+	
+	setTNData(t->root, o);
 		
 	trace("setData: setData ends");
 }
@@ -240,15 +232,14 @@ void setData(gameTree t,void *o)
 void setLevel(gameTree t,int l)
 {
 	trace("setLevel: setLevel starts");
-	
-	if (t != NULL && !isEmptyGT(t))
+
+	if (t == NULL || isEmptyGT(t))
 	{
-		setLevel(t->root, l);
-	}
-	else
-	{
+		fprintf(stderr,"setLevel: game tree is empty or null");
 		exit(1);
 	}
+	
+	setTNLevel(t->root, l);
 
 	trace("setLevel: setLevel ends");
 }
@@ -268,15 +259,14 @@ void setLevel(gameTree t,int l)
 void setChild(gameTree t,gameTree c)
 {
 	trace("setChild: setChild starts");
-
-	if (t != NULL && !isEmptyGT(t))
+	
+	if (t == NULL || isEmptyGT(t))
 	{
-		setTNChild(t->root, c->root);
-	}
-	else
-	{
+		fprintf(stderr,"setChild: game tree is empty or null");
 		exit(1);
 	}
+
+	setTNChild(t->root, c->root);
 		
 	trace("setChild: setChild ends");
 }
@@ -297,14 +287,13 @@ void setSibling(gameTree t,gameTree s)
 {
 	trace("setSibling: setSibling starts");
 
-	if (t != NULL && !isEmptyGT(t))
+	if (t == NULL || isEmptyGT(t))
 	{
-		setTNSibling(t->root, s->root);
-	}
-	else
-	{
+		fprintf(stderr,"setSibling: game tree is empty or null");
 		exit(1);
 	}
+
+	setTNSibling(t->root, s->root);
 
 	trace("setSibling: setSibling ends");
 }
