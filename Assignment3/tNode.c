@@ -49,8 +49,10 @@ struct tNode_int
 void init_TNode(tNode *tp, void *o, int l)
 {
     trace("TNode: Initialiser starts");
-
-//TODO
+    
+    *tp = (tNode)malloc(sizeof(struct tNode_int));
+    (*tp)->data = o;
+    (*tp)->level = l;
 
     trace("TNode: Initialiser ends");
 }
@@ -70,8 +72,8 @@ void init_TNode(tNode *tp, void *o, int l)
 void setTNData(tNode t,void *o)
 {
     trace("setTNData: setTNData starts");
-
-//TODO
+    
+    t->data = o;
 
     trace("setTNData: setTNData ends");
 }
@@ -91,8 +93,8 @@ void setTNData(tNode t,void *o)
 void setTNLevel(tNode t,int l)
 {
     trace("setTNLevel: setTNLevel starts");
-
-//TODO
+    
+    t->level = l;
 
     trace("setTNLevel: setTNLevel ends");
 }
@@ -112,8 +114,8 @@ void setTNLevel(tNode t,int l)
 void setTNChild(tNode t,tNode n)
 {
     trace("setTNChild: setTNChild starts");
-
-//TODO
+    
+    t->child = n;
 
     trace("setTNChild: setTNChild ends");
 }
@@ -133,8 +135,8 @@ void setTNChild(tNode t,tNode n)
 void setTNSibling(tNode t,tNode n)
 {
     trace("setTNSibling: setTNSibling starts");
-
-//TODO
+    
+    t->sibling = n;
 
     trace("setTNSibling: setTNSibling ends");
 }
@@ -153,8 +155,8 @@ void setTNSibling(tNode t,tNode n)
 void *getTNData(tNode t)
 {
     trace("getTNData: getTNData starts and ends");
-
-//TODO
+    
+    return t->data;
 }
 	
 	
@@ -172,8 +174,8 @@ void *getTNData(tNode t)
 int getTNLevel(tNode t)
 {
     trace("getTNLevel: getTNLevel starts and ends");
-
-//TODO
+    
+    return t->level;
 }
 	
 	
@@ -192,7 +194,7 @@ tNode getTNChild(tNode t)
 {
     trace("getTNChild: getTNChild starts and ends");
 
-//TODO
+	return t->child;
 }
 	
 	
@@ -211,7 +213,7 @@ tNode getTNSibling(tNode t)
 {
     trace("getTNSibling: getTNSibling starts and ends");
 
-//TODO
+	return t->sibling;
 }
 
 
