@@ -125,7 +125,7 @@ int getLevel(gameTree t)
 
 	trace("getLevel: getLevel ends");
 
-	return getTNLevel(t->root);
+	return getTNLevel (t->root);
 }	
 	
 
@@ -430,18 +430,25 @@ void buildGameDF(gameTree t, stack k, int d)
 */
 void adjustLevel(gameTree t)
 {
-	char msg[100];	// string for building up trace() messages
-
 	trace("adjustLevel: adjustLevel starts");
-		
-  	if (! isEmptyGT(t))
+	
+	// trace the setting of the level.
+	char *mesg = (char*)malloc(sizeof(char) * 32);
+	sprintf(mesg, "adjustLevel: setting level to %d", getLevel(t) - 1);
+	trace(mesg);
+	
+	if (!isEmptyGT(t))
 	{
-    	adjustLevel(getChild(t));	// recursively adjust all in the sub-tree
-    	adjustLevel(getSibling(t));	// recursively adjust all in the adjacent tree
-		sprintf(msg,"adjustLevel: setting level to %d",(getLevel(t)-1));
-    	trace(msg);
-    	setLevel(t,getLevel(t)-1);	// make the change to the level number
-  	}
+		// recursively adjust all in the sub-tree
+		if (getChild(t) != NULL)
+			adjustLevel(getChild(t));
+		// recursively adjust all in the adjacent tree
+		if (getSibling(t) != NULL)
+			adjustLevel(getSibling(t));
+	}
+	
+	// Decrement the level of the game tree
+	setLevel(t, getLevel(t) - 1);
   		
 	trace("adjustLevel: adjustLevel ends");
 }
@@ -745,24 +752,16 @@ void findMove(gameTree t,int m)
 */
 char *rootNodeToString(gameTree t)
 {
-	char *s;	// function result
-
 	trace("rootNodeToString: rootNodeToString starts");
-	
-	s=(char *)malloc(5*sizeof(char));
 		
 	if (isEmptyGT(t))	// empty game tree
-	{
 		return "<>";
-	}
-	else	// non-empty game tree
-	{
-		sprintf(s,"%d ",getCount((gameState)getData(t)));
-	}
+	
+	char *s = (char*)malloc(sizeof(char) * 5);
+	sprintf(s,"%d ",getCount((gameState)getData(t)));
+	return s;
 
 	trace("rootNodeToString: rootNodeToString ends");
-
-	return s;
 }
 	
 	
