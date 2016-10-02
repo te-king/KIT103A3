@@ -25,7 +25,8 @@
 
 
 // internals of the state of the game
-struct gameState_int {
+struct gameState_int 
+{
 	int count;	// the number of matches still to be removed
 	int worth;	// how optimistic the position looks for the computer
 };
@@ -155,34 +156,24 @@ int evaluateState(gameState s,bool p)
 	int r;	// function result
 
 	trace("evaluateState: evaluateState starts");
-
-	if (s->count == 0)	// game is over
+	
+	switch (s->count)
 	{
-		r=9;
-	}
-	else
-	{
-		if (s->count == 1)	// game will be lost on next turn
-		{
-			r=-5;
-		}
-		else
-		{
-			if (s->count <= MAX_MOVES+1)	// game could be claimed on next turn
-			{
-				r=-3;
-			}
-			else	// too early to tell what the outcome could be
-			{
-				r=0;
-			}
-		}
+		case 0: // The game is over
+			r = 9;
+			break;
+		case 1: // The game will be lost on next turn
+			r = -5
+			break;
+		default:
+			// If count <= MAX_MOVES + 1, game could be claimed on next turn, else it is too early to tell what the outcome coule be.
+			r = (s->count <= MAX_MOVES + 1) ? -3 : 0;
+			break;
 	}
 
-	if (!p)	// not the computer's turn so invert the scores
-	{
+	// not the computer's turn so invert the scores
+	if (!p)
 		r=-r;
-	}
 
 	trace("evaluateState: evaluateState ends");
 
@@ -204,5 +195,5 @@ bool gameOver(gameState s)
 {
 	trace("gameOver: gameOver starts and ends");
 	
-	return s->count >= 0;
+	return s->count == 0;
 }

@@ -19,7 +19,8 @@
 
 
 // internals for the stack
-struct stack_int {
+struct stack_int 
+{
 	node tos;		// top-of-stack pointer
 };
 
@@ -73,20 +74,17 @@ bool isEmptyS(stack s)
 */
 void *top(stack s)
 {
-	void *value;	// Value at the top of the stack.
     trace("stack: top starts");
-	
-	if (!isEmptyS(s))
-	{
-		value = getDataN(s->tos);
-	}
-	else
-	{
-		exit(1);
-	}
+    
+    if (isEmptyS(s))
+    {
+	    fprintf(stderr,"top: stack is empty");
+	    exit(1);
+    }
 
     trace("stack: top ends");
-	return value;
+
+	return getDataN(s->tos);
 }
 
 /*
@@ -103,14 +101,15 @@ void *top(stack s)
 void pop(stack s)
 {
     trace("stack: pop starts");
-	if (!isEmptyS(s))
+
+	if (isEmptyS(s))
 	{
-		s->tos = getNextN(s->tos);	// TODO maybe free the memory before tossing it away
-	}
-	else
-	{
+		fprintf(stderr,"pop: stack is empty");
 		exit(1);
 	}
+	
+	s->tos = getNextN(s->tos);
+	
     trace("stack: pop ends");
 }
 
@@ -127,9 +126,9 @@ void pop(stack s)
 */
 void push(stack s,void *o)
 {
-	node n;	// The new node to be added.
     trace("stack: push starts");
 
+	node n;	// The new node to be added.
 	init_node(&n, o);
 	setNextN(n, s->tos);
 	s->tos = n;
