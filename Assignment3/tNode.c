@@ -51,8 +51,10 @@ void init_TNode(tNode *tp, void *o, int l)
     trace("TNode: Initialiser starts");
     
     *tp = (tNode)malloc(sizeof(struct tNode_int));
-    (*tp)->data = o;
-    (*tp)->level = l;
+	setTNData(*tp, o);
+	setTNLevel(*tp, l);
+	setTNChild(*tp, NULL);
+	setTNSibling(*tp, NULL);
 
     trace("TNode: Initialiser ends");
 }

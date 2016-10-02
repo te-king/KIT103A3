@@ -320,11 +320,11 @@ void setSibling(gameTree t,gameTree s)
 */
 void generateLevelDF(gameTree t,stack k)
 {
-	gameTree eldest_child;		// Game tree containing the first child which t's root node will be assigned.
-	gameTree current_sibling;	// The sibling to add the next sibling to.
-	gameTree next_sibling;		// The next sibling to be added to the current sibling.
-	gameState new_state;		// The new state to be added to each new child.
-	int count;					// The number of remaining matches.
+	gameTree current;			// The gameTree which is currently being worked on.
+	gameTree next;				// The gameTree containing the new node to be added.
+	gameState new_state;		// A new state to be added to new gameTrees.
+	gameTree current;			// The tree which is currently being worked on.
+	int matches;				// The number of remaining matches.
 	bool computer_turn;	// Whether it is the computer's turn or not.
 
 	trace("generateLevelDF: generateLevelDF starts");
@@ -332,41 +332,29 @@ void generateLevelDF(gameTree t,stack k)
 	if (!isEmpty(t))
 	{
 		// If the level number is odd, then the turn is for the computer player
-		if (getLevel(t) % 2 == 1)
+		computer_turn = getLevel(t) % 2 == 1;
+
+		matches = getCount((gameState)getData(t));
+
+		current = t;
+
+		for (int i = 1; i <= 9 && matches > 0; i++)
 		{
-			computer_turn = true;
-		}
-		else
-		{
-			computer_turn = false;
-		}
-
-		count = getCount((gameState)getData(t));
-
-		//TODO Could make a seperate function to reduce repetition. Could even start the for loop at 1 and check i == 1 to do first itteration.
-		// The first itteration adds the new tNode via setChild
-		count--;
-		init_gameState(&new_state, count, 0);
-		evaluateState(new_state, computer_turn);
-
-		init_gameTree(&eldest_child, false, new_state, getLevel(t) + 1);
-		setChild(t, eldest_child);
-		push(k, eldest_child);
-
-		current_sibling = eldest_child;
-
-		// All other itterations add the new tNodes via setSibling
-		for (int i = 2; i <= 9 && count > 0; i++)
-		{
-			count--;
-			init_gameState(&new_state, count, 0);
+			matches--;
+			init_gameState(&new_state, matches, 0);
 			evaluateState(new_state, computer_turn);
 
-			init_gameTree(&next_sibling, false, new_state, getLevel(t) + 1);
-			setSibling(current_sibling, next_sibling);
-			push(k, next_sibling);
-
-			current_sibling = next_sibling;
+			init_gameTree(&next, false, new_state, getLevel(t) + 1);
+			push(k, next);
+			if (i == 1)
+			{
+				setChild(current, next);
+			}
+			else
+			{
+				setSibling(current, next);
+			}
+			current = next;
 		}
 	}
 	else
@@ -410,9 +398,34 @@ void generateLevelDF(gameTree t,stack k)
 */
 void buildGameDF(gameTree t, stack k, int d)
 {
+	gameState state;	// gameState to be assigned if t is empty.
+
 	trace("buildGameDF: buildGameDF starts");
 	
-	//TODO
+	if (isEmpty(t))
+	{
+		init_gameState(state, MAX_MATCHES, 0);
+		init_gameTree(t, false, state, 0);
+		push(k, t);
+	}
+	else
+	{
+		if (getLevel(t) < d)
+		{
+			if (getChild(t) == NULL)
+			{
+				generateLevelDF(t, k);
+			}
+			
+			buildGameDF(getChild(t), k, d);
+
+			if (getSibling(t) != NULL)
+			{
+				buildGameDF(getSibling(t), k, d);
+			}
+		}
+	}
+	//TODO I am confused by this function's header and am not sure if I have done this correctly..
 
 	trace("buildGameDF: buildGameDF ends");
 }
