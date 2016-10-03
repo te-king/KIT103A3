@@ -163,7 +163,7 @@ int evaluateState(gameState s,bool p)
 			r = 9;
 			break;
 		case 1: // The game will be lost on next turn
-			r = -5
+			r = -5;
 			break;
 		default:
 			// If count <= MAX_MOVES + 1, game could be claimed on next turn, else it is too early to tell what the outcome coule be.
