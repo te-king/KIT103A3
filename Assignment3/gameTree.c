@@ -50,7 +50,7 @@ void init_gameTree(gameTree *tp,bool e,void *o,int l)
 	tNode n = NULL;
 	
 	if (!e)
-		init_TNode(n, o, l);
+		init_TNode(&n, o, l);
 		
 	(*tp)->root = n;
 		
@@ -152,8 +152,8 @@ gameTree getChild(gameTree t)
 	}
 	
 	gameTree new_tree;	// The new tree containing t's child as its root node.
-	init_gameTree(new_tree, true, NULL, 0);
-	new_tree->root = getChild(t->root);
+	init_gameTree(&new_tree, true, NULL, 0);
+	new_tree->root = getTNChild(t->root);
 
 	trace("getChild: getChild ends");
 
@@ -183,8 +183,8 @@ gameTree getSibling(gameTree t)
 	}
 	
 	gameTree new_tree;	// The new tree containing t's sibling.
-	init_gameTree(new_tree, true, NULL, 0);
-	new_tree->root = getSibling(t->root);
+	init_gameTree(&new_tree, true, NULL, 0);
+	new_tree->root = getTNSibling(t->root);
 
 	trace("getSibling: getSibling ends");
 
@@ -323,13 +323,12 @@ void generateLevelDF(gameTree t,stack k)
 	gameTree current;			// The gameTree which is currently being worked on.
 	gameTree next;				// The gameTree containing the new node to be added.
 	gameState new_state;		// A new state to be added to new gameTrees.
-	gameTree current;			// The tree which is currently being worked on.
 	int matches;				// The number of remaining matches.
 	bool computer_turn;	// Whether it is the computer's turn or not.
 
 	trace("generateLevelDF: generateLevelDF starts");
 
-	if (!isEmpty(t))
+	if (!isEmptyGT(t))
 	{
 		// If the level number is odd, then the turn is for the computer player
 		computer_turn = getLevel(t) % 2 == 1;
@@ -402,17 +401,17 @@ void buildGameDF(gameTree t, stack k, int d)
 
 	trace("buildGameDF: buildGameDF starts");
 	
-	if (isEmpty(t))
+	if (isEmptyGT(t))
 	{
-		init_gameState(state, MAX_MATCHES, 0);
-		init_gameTree(t, false, state, 0);
+		init_gameState(&state, MAX_MATCHES, 0);
+		init_gameTree(&t, false, state, 0);
 		push(k, t);
 	}
 	else
 	{
 		if (getLevel(t) < d)
 		{
-			if (getChild(t) == NULL)
+			if (getChild(t)->root == NULL)
 			{
 				generateLevelDF(t, k);
 			}
