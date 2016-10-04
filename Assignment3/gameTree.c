@@ -452,10 +452,10 @@ void adjustLevel(gameTree t)
 	if (!isEmptyGT(t))
 	{
 		// recursively adjust all in the sub-tree
-		if (getChild(t) != NULL)
+		if (getChild(t) != NULL && !isEmptyGT(getChild(t)))
 			adjustLevel(getChild(t));
 		// recursively adjust all in the adjacent tree
-		if (getSibling(t) != NULL)
+		if (getSibling(t) != NULL && !isEmptyGT(getSibling(t)))
 			adjustLevel(getSibling(t));
 	}
 	
