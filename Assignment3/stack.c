@@ -78,7 +78,7 @@ void *top(stack s)
     
     if (isEmptyS(s))
     {
-	    fprintf(stderr,"top: stack is empty");
+	    fprintf(stderr,"top: stack is empty\n");
 	    exit(1);
     }
 
@@ -104,7 +104,7 @@ void pop(stack s)
 
 	if (isEmptyS(s))
 	{
-		fprintf(stderr,"pop: stack is empty");
+		fprintf(stderr,"pop: stack is empty\n");
 		exit(1);
 	}
 	

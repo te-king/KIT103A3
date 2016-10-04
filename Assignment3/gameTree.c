@@ -92,7 +92,7 @@ void *getData(gameTree t)
 		
 	if (isEmptyGT(t))
 	{
-		fprintf(stderr,"getData: empty game tree");
+		fprintf(stderr,"getData: empty game tree\n");
 		exit(1);
 	}
 
@@ -119,7 +119,7 @@ int getLevel(gameTree t)
 	// Because there is no pre-condition, exit when t is null or empty.
 	if (t == NULL || isEmptyGT(t))
 	{
-		fprintf(stderr,"getLevel: game tree is empty or null");
+		fprintf(stderr,"getLevel: game tree is empty or null\n");
 		exit(2);
 	}
 
@@ -147,7 +147,7 @@ gameTree getChild(gameTree t)
 	
 	if (t == NULL || isEmptyGT(t))
 	{
-		fprintf(stderr,"getChild: game tree is empty or null");
+		fprintf(stderr,"getChild: game tree is empty or null\n");
 		exit(1);
 	}
 	
@@ -178,7 +178,7 @@ gameTree getSibling(gameTree t)
 	
 	if (t == NULL || isEmptyGT(t))
 	{
-		fprintf(stderr,"getSibling: game tree is empty or null");
+		fprintf(stderr,"getSibling: game tree is empty or null\n");
 		exit(1);
 	}
 	
@@ -209,7 +209,7 @@ void setData(gameTree t,void *o)
 
 	if (t == NULL || isEmptyGT(t))
 	{
-		fprintf(stderr,"setData: game tree is empty or null");
+		fprintf(stderr,"setData: game tree is empty or null\n");
 		exit(1);
 	}
 	
@@ -236,7 +236,7 @@ void setLevel(gameTree t,int l)
 
 	if (t == NULL || isEmptyGT(t))
 	{
-		fprintf(stderr,"setLevel: game tree is empty or null");
+		fprintf(stderr,"setLevel: game tree is empty or null\n");
 		exit(1);
 	}
 	
@@ -263,7 +263,7 @@ void setChild(gameTree t,gameTree c)
 	
 	if (t == NULL || isEmptyGT(t))
 	{
-		fprintf(stderr,"setChild: game tree is empty or null");
+		fprintf(stderr,"setChild: game tree is empty or null\n");
 		exit(1);
 	}
 
@@ -290,7 +290,7 @@ void setSibling(gameTree t,gameTree s)
 
 	if (t == NULL || isEmptyGT(t))
 	{
-		fprintf(stderr,"setSibling: game tree is empty or null");
+		fprintf(stderr,"setSibling: game tree is empty or null\n");
 		exit(1);
 	}
 
