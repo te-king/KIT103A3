@@ -113,7 +113,7 @@ void setNextN(node v, node n)
 {
     trace("TNode: setNextN starts");
 
-	n->next = n;
+	v->next = n;
 
     trace("TNode: setNextN ends");
 }
