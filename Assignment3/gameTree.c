@@ -10,7 +10,7 @@
  *	which has a "data" field and "child" and
  *	"sibling" references, and a "level" value.
  *
- * YOU NEED TO COMPLETE THIS FILE. 
+ *  This file is complete.
 */
 
 
@@ -71,6 +71,12 @@ void init_gameTree(gameTree *tp,bool e,void *o,int l)
 bool isEmptyGT(gameTree t)
 {
 	trace("isEmptyGT: isEmptyGT starts and ends");
+	
+	if (t == NULL)
+	{
+		fprintf(stderr, "isEmptyGT: game tree is null\n");
+		exit(1);
+	}
 		
 	return t->root == NULL;
 }
@@ -90,9 +96,9 @@ void *getData(gameTree t)
 {
 	trace("getData: getData starts");
 		
-	if (isEmptyGT(t))
+	if (t == NULL || isEmptyGT(t))
 	{
-		fprintf(stderr,"getData: empty game tree\n");
+		fprintf(stderr,"getData: game tree is empty or null\n");
 		exit(1);
 	}
 
@@ -120,7 +126,7 @@ int getLevel(gameTree t)
 	if (t == NULL || isEmptyGT(t))
 	{
 		fprintf(stderr,"getLevel: game tree is empty or null\n");
-		exit(2);
+		exit(1);
 	}
 
 	trace("getLevel: getLevel ends");
@@ -424,7 +430,6 @@ void buildGameDF(gameTree t, stack k, int d)
 			}
 		}
 	}
-	//TODO I am confused by this function's header and am not sure if I have done this correctly..
 
 	trace("buildGameDF: buildGameDF ends");
 }
@@ -452,15 +457,15 @@ void adjustLevel(gameTree t)
 	if (!isEmptyGT(t))
 	{
 		// recursively adjust all in the sub-tree
-		if (getChild(t) != NULL && !isEmptyGT(getChild(t)))
+		if (getChild(t) != NULL && ! isEmptyGT(getChild(t)))
 			adjustLevel(getChild(t));
 		// recursively adjust all in the adjacent tree
 		if (getSibling(t) != NULL && !isEmptyGT(getSibling(t)))
 			adjustLevel(getSibling(t));
+
+		// Decrement the level of the game tree
+		setLevel(t, getLevel(t) - 1);
 	}
-	
-	// Decrement the level of the game tree
-	setLevel(t, getLevel(t) - 1);
   		
 	trace("adjustLevel: adjustLevel ends");
 }
@@ -770,7 +775,6 @@ char *rootNodeToString(gameTree t)
 	if (isEmptyGT(t))
 		return "<>";
 	
-	// TODO Commenting?
 	char *s = (char*)malloc(sizeof(char) * 5);
 	sprintf(s,"%d ",getCount((gameState)getData(t)));
 	return s;

@@ -10,7 +10,7 @@
  *	(these being the child node ("child") and the
  *	next-eldest sibling node ("sibling")).
  *	
- *	YOU NEED TO COMPLETE THIS FILE.
+ *	This file is complete.
 */
 
 
