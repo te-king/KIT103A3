@@ -337,7 +337,7 @@ void generateLevelDF(gameTree t,stack k)
 
 		current = t;
 
-		for (int i = 1; i <= 9 && matches > 0; i++)
+		for (int i = 1; i <= MAX_MOVES && matches > 0; i++)
 		{
 			matches--;
 			init_gameState(&new_state, matches, 0);
